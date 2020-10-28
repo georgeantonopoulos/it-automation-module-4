@@ -4,7 +4,7 @@ import shutil
 import socket
 from emails import generate_email, send_email
 
-username = ""  # ADD THIS BEFORE RUNNING #######
+username = "student-00-78aa1a56aa59"  # ADD THIS BEFORE RUNNING #######
 sender = "automation@example.com"
 receiver = "{}@example.com".format(username)
 email_body = "Please check your system and resolve the issue as soon as possible."
@@ -56,5 +56,7 @@ def check_localhost():
 
 
 
-
-
+check_cpu()
+check_disk_space()
+check_mem()
+check_localhost()
