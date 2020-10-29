@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import os, requests
 
-ip_address = "" ####### FILL IT IN #########
+ip_address = "34.122.125.197" ####### FILL IT IN #########
 home_dir = os.path.expanduser("~")
 dscr_dir = r"{0}/supplier-data/descriptions".format(home_dir)
-url = r"http://{0}/fruits".format(ip_address)
+url = r"http://{0}/fruits/".format(ip_address)
 
 
 def process_data():
@@ -20,7 +20,7 @@ def process_data():
                     "name":dscr_txt.readline().rstrip("\n"),
                     "weight":int(dscr_txt.readline().rstrip("\n").split(" ")[0]),
                     "description":dscr_txt.read().rstrip("\n"),
-                    "image":dscr_file.split(".")[0] + ".jpeg"
+                    "image_name":dscr_file.split(".")[0] + ".jpeg"
                 }
             )
     return dscr_lst  
@@ -38,5 +38,5 @@ def post_data(dscr_lst):
 
 
 dscr_lst = process_data()
-print(dscr_lst)
-#post_data(dscr_lst)
+#print(dscr_lst)
+post_data(dscr_lst)
