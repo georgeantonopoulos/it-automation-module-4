@@ -5,26 +5,24 @@ from run import process_data
 from emails import generate_email, send_email
 
 
-username = "" ###### ADD THIS BEFORE RUNNING #######
+username = "student-00-78aa1a56aa59" ###### ADD THIS BEFORE RUNNING #######
 attachment = '/tmp/processed.pdf'
-title = "Processed Update on {}".format(datetime.date.today())
+title = "Processed Update on {}".format(datetime.datetime.now().strftime('%B %d, %Y'))
 
 
 if __name__ == "__main__":
 
     data = process_data()
 
-    pdf_body = []
+    pdf_body = ""
 
     for item in data:
         # name, weight & blank line
-        name = "name:{}".format(item['name'])
-        pdf_body.append(name)
-        weight = "weight:{} lbs".format(item['weight'])
-        pdf_body.append(weight)
-        pdf_body.append("</br>")
+        name = "name: {}".format(item['name'])
+        weight = "weight: {} lbs".format(item['weight'])
+        #pdf_body.append("</br>")
+        pdf_body += name + "<br/>" + weight + "<br/><br/>"
 
-    pdf_body = "</br>".join(pdf_body)
 
     generate_report(attachment, title, pdf_body)
 
